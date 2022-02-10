@@ -13,4 +13,15 @@ class Offer extends Model
     {
         return $query->where('departure', $departure);
     }
+
+    public function getMonthAttribute()
+    {
+        $month = $this->from;
+        return $month;
+    }
+
+    public function getFromAttribute($value)
+    {
+        return $value;
+    }
 }
