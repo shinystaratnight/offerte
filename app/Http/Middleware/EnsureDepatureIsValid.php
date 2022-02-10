@@ -16,7 +16,7 @@ class EnsureDepatureIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        $departure_array = [null, 'palermo', 'catalina', 'roma', 'malino'];
+        $departure_array = [null, 'palermo', 'catalina', 'roma', 'milano'];
         $departure = $request->departure;
         if (!in_array($departure, $departure_array)) {
             return redirect('/');
