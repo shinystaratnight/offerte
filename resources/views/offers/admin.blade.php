@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.admin')
 
 @section('content')
     <section class="pt-5 pb-5">
@@ -32,42 +32,34 @@
                                     {{ucfirst($departure)}}
                                 </h4>
                                 <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Luogo di Partenza</th>
-                                        <th scope="col">Dal</th>
-                                        <th scope="col">Al</th>
-                                        <th scope="col">Prezzo</th>
-                                        <th scope="col">Link</th>
-                                    </tr>
-                                    </thead>
                                     <tbody>
                                     @if(count($offers[$m]) > 0)
                                         @foreach($offers[$m] as $offer)
-                                        <tr>
-                                            <td>
-                                                <b>{{ $offer->destination }}</b>
-                                                @if ($offer->hot)
-                                                    <span class="badge bg-danger">Hot</span>
-                                                @endif
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" class="form-check-input ms-0"
+                                                           name="hot">
+                                                </td>
+                                                <td>
+                                                    @if ($offer->hot)
+                                                        <span class="badge bg-danger">Hot</span>
+                                                    @endif
 
-                                                @if (now()->diffInDays(\Carbon\Carbon::parse($offer->created_at)) <= 2)
-                                                    <span class="badge bg-primary">New</span>
-                                                @endif
-                                            </td>
-                                            <td>{{ \Carbon\Carbon::parse($offer->from)->format('d/m') }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($offer->to)->format('d/m') }}</td>
-                                            <td><b>€{{ $offer->price }}</b></td>
-                                            <td>
-                                                <a class="btn btn-primary btn-sm" onclick="window.open('{{$offer->link}}', '_blank')">
-                                                    <i class="fas fa-shopping-cart"></i> Prenota Adesso
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                    @if (now()->diffInDays(\Carbon\Carbon::parse($offer->created_at)) <= 2)
+                                                        <span class="badge bg-primary">New</span>
+                                                    @endif
+                                                    <b>{{ $offer->destination }}</b>
+                                                    dal {{ \Carbon\Carbon::parse($offer->from)->format('d/m') }} al {{ \Carbon\Carbon::parse($offer->to)->format('d/m') }}
+                                                    - {{ \Carbon\Carbon::parse($offer->to)->diffInDays(\Carbon\Carbon::parse($offer->from))}} notti da <b>€{{ $offer->price }}
+                                                        <a class="btn btn-primary btn-sm" onclick="window.open('{{$offer->link}}', '_blank')">
+                                                            <i class="fas fa-shopping-cart"></i> Prenota Adesso
+                                                        </a>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="5" class="text-center">
+                                            <td class="text-center">
                                                 No offer exists
                                             </td>
                                         </tr>

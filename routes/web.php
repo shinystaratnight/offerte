@@ -14,5 +14,10 @@ use App\Http\Middleware\EnsureDepatureIsValid;
 |
 */
 
-Route::get('/', [OfferController::class,  'index'])->name('index')
+Route::get('/', [OfferController::class, 'index'])->name('index')
     ->middleware(EnsureDepatureIsValid::class);
+Route::get('/admin', [OfferController::class, 'admin'])->name('admin')
+    ->middleware(EnsureDepatureIsValid::class);
+
+Route::get('/admin/create', [OfferController::class, 'create'])->name('create');
+Route::post('/admin/offer', [OfferController::class, 'store'])->name('store');
