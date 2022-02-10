@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-white  navbar-expand-md">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="{{ route('index') }}">
             <img src=" https://www.viagginvidia.it/images/viagginvidia350x72.jpg"
                  height="30" alt="image">
         </a>
@@ -12,29 +12,29 @@
         <div class="collapse navbar-collapse" id="navbarNav3">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('palemo') }}">Partenza da Palermo
-                        @if(request()->is('palemo'))
+                    <a class="nav-link" href="{{ route('index', ['depature' => 'palemo']) }}">Partenza da Palermo
+                        @if(request()->depature == 'palemo' || request()->depature == null)
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('catalina') }}">Partenza da Catania
-                        @if(request()->is('catalina'))
+                    <a class="nav-link" href="{{ route('index', ['depature' => 'catalina']) }}">Partenza da Catania
+                        @if(request()->depature == 'catalina')
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('roma') }}">Partenza da Roma
-                        @if(request()->is('roma'))
+                    <a class="nav-link" href="{{ route('index', ['depature' => 'roma']) }}">Partenza da Roma
+                        @if(request()->depature == 'roma')
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('milano') }}">Partenza da Milano
-                        @if(request()->is('milano'))
+                    <a class="nav-link" href="{{ route('index', ['depature' => 'milano']) }}">Partenza da Milano
+                        @if(request()->depature == 'milano')
                             <span class="sr-only">(current)</span>
                         @endif
                     </a>

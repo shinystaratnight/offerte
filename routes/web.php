@@ -13,11 +13,8 @@ use \App\Http\Controllers\OfferController;
 |
 */
 
-Route::get('/', function() {
-    return redirect('/palemo');
-})->name('home');
+//Route::get('/', function() {
+//    return redirect('/palemo');
+//})->name('home');
 
-Route::get('/palemo', [OfferController::class,  'palemo'])->name('palemo');
-Route::get('/catalina', [OfferController::class,  'catalina'])->name('catalina');
-Route::get('/roma', [OfferController::class,  'roma'])->name('roma');
-Route::get('/milano', [OfferController::class,  'milano'])->name('milano');
+Route::get('/', [OfferController::class,  'index'])->name('index');
