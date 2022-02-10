@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\OfferController;
+use App\Http\Controllers\OfferController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +12,5 @@ use \App\Http\Controllers\OfferController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::get('/', function() {
-//    return redirect('/palemo');
-//})->name('home');
 
 Route::get('/', [OfferController::class,  'index'])->name('index');

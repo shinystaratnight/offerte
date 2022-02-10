@@ -15,7 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
+            $table->enum('category', ['palermo', 'catalina', 'roma', 'milano']);
             $table->boolean('hot');
             $table->string('destination');
             $table->date('from');
