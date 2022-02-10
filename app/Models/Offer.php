@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     use HasFactory;
+
+    public function scopeOfDeparture($query, $departure)
+    {
+        return $query->where('departure', $departure);
+    }
 }
