@@ -15,13 +15,14 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->enum('category', ['palermo', 'catalina', 'roma', 'milano']);
+            $table->string('category')->nullable();
             $table->boolean('hot');
             $table->string('destination');
             $table->date('from');
             $table->date('to');
             $table->integer('price');
             $table->string('link');
+            $table->enum('departure', ['palermo', 'catalina', 'roma', 'milano']);
             $table->timestamps();
         });
     }

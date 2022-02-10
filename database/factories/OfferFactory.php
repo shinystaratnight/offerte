@@ -14,12 +14,12 @@ class OfferFactory extends Factory
     public function definition()
     {
         return [
-            'category' => $this->faker->randomElement(['palermo', 'catalina', 'roma', 'milano']),
             'hot' => $this->faker->boolean(),
             'destination' => $this->faker->city,
             'from' => $this->faker->date,
             'to' => $this->faker->date,
             'price' => $this->faker->randomNumber(2),
+            'departure' => $this->faker->randomElement(['palermo', 'catalina', 'roma', 'milano']),
             'link' => 'https://viagginvidia.it/go/'.$this->faker->word,
         ];
     }
