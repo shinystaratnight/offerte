@@ -110,8 +110,9 @@ class OfferController extends Controller
         return redirect(route('admin'));
     }
 
-    public function show(Request $request)
+    public function getContent(Request $request)
     {
-
+        $ids = $request->input('ids');
+        Debugbar::log($ids);
     }
 }

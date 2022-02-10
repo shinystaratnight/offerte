@@ -21,3 +21,4 @@ Route::get('/admin', [OfferController::class, 'admin'])->name('admin')
 
 Route::get('/admin/create', [OfferController::class, 'create'])->name('create');
 Route::post('/admin/offer', [OfferController::class, 'store'])->name('store');
+Route::get('/admin/get-content', [OfferController::class, 'getContent'])->name('get_content');

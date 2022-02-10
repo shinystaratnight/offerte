@@ -5,7 +5,8 @@
         <div class="container">
             <div class="mb-3 d-flex justify-content-end">
                 <a href="{{route('create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> New Offer</a>
-                <button type="button" class="btn btn-success ms-3"><i class="fas fa-copy"></i> Copy</button>
+                <button type="button" class="copy-button btn btn-success ms-3"><i class="fas fa-copy"></i> Copy</button>
+                <button type="button" class="deselect-button btn btn-danger ms-3"><i class="fas fa-ban"></i> Deselect All</button>
             </div>
             <div class="row">
                 <div class="col-md-3 col-sm-12">
@@ -80,12 +81,24 @@
 
     <script>
         var $ = jQuery;
-        $('input:checkbox').click(function () {
-            var $table = $(this).closest('.table');
-            $table.find('input[type=checkbox]').each(function () {
-
+        $('.copy-button').click(function () {
+            var ids = [];
+            $table = $(this).closest('.container').find('table');
+            $table.find('input[type=checkbox]:checked').each(function () {
+                ids.push($(this).data('id'));
             });
-            console.log($(this));
+            console.log(ids);
+            // $.get('admin/get-content', { ids: ids}, function () {
+            //
+            // });
+
+        });
+
+        $('.deselect-button').click(function () {
+            $table = $(this).closest('.container').find('table');
+            $table.find('input[type=checkbox]:checked').each(function () {
+                $(this).prop("checked", false);
+            });
         });
     </script>
 @stop
