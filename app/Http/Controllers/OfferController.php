@@ -113,6 +113,13 @@ class OfferController extends Controller
     public function getContent(Request $request)
     {
         $ids = $request->input('ids');
-        Debugbar::log($ids);
+        $contents = [];
+        foreach ($ids as $id) {
+            $offer = Offer::find($id);
+            $content = $offer->destination.' dal '.$offer->from.' al '.$offer->to.' da €'.$offer->price.' '.$offer->link;
+            $contents[] = $content;
+        }
+
+        return response($contents);
     }
 }

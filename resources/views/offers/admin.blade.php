@@ -3,6 +3,10 @@
 @section('content')
     <section class="pt-5 pb-5">
         <div class="container">
+{{--            <div class="alert alert-warning alert-dismissible fade show" role="alert">--}}
+{{--                <strong>Holy guacamole!</strong> You should check in on some of those fields below.--}}
+{{--                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>--}}
+{{--            </div>--}}
             <div class="mb-3 d-flex justify-content-end">
                 <a href="{{route('create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> New Offer</a>
                 <button type="button" class="copy-button btn btn-success ms-3"><i class="fas fa-copy"></i> Copy</button>
@@ -84,13 +88,20 @@
         $('.copy-button').click(function () {
             var ids = [];
             $table = $(this).closest('.container').find('table');
+            if ($table.find('input[type=checkbox]:checked').length == 0) {
+                alert('Please select the offers to copy.');
+                return;
+            }
             $table.find('input[type=checkbox]:checked').each(function () {
                 ids.push($(this).data('id'));
             });
+
             console.log(ids);
-            // $.get('admin/get-content', { ids: ids}, function () {
-            //
-            // });
+
+            $.get('admin/get-content', { ids: ids }, function (data) {
+                var text = data.join('\n');
+                navigator.clipboard.writeText(text);
+            });
 
         });
 

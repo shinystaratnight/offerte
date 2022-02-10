@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,11 @@ class Offer extends Model
 
     public function getFromAttribute($value)
     {
-        return $value;
+        return Carbon::parse($value)->format('d M');
+    }
+
+    public function getToAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M');
     }
 }
