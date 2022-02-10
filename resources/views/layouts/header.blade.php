@@ -12,17 +12,32 @@
         <div class="collapse navbar-collapse" id="navbarNav3">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('palemo') }}">Partenza da Palermo <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('palemo') }}">Partenza da Palermo
+                        @if(request()->is('palemo'))
+                            <span class="sr-only">(current)</span>
+                        @endif
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('catalina') }}">Partenza da Catania</a>
+                    <a class="nav-link" href="{{ route('catalina') }}">Partenza da Catania
+                        @if(request()->is('catalina'))
+                            <span class="sr-only">(current)</span>
+                        @endif
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('roma') }}">Partenza da Roma</a>
+                    <a class="nav-link" href="{{ route('roma') }}">Partenza da Roma
+                        @if(request()->is('roma'))
+                            <span class="sr-only">(current)</span>
+                        @endif
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('milano') }}">Partenza da Milano</a>
+                    <a class="nav-link" href="{{ route('milano') }}">Partenza da Milano
+                        @if(request()->is('milano'))
+                            <span class="sr-only">(current)</span>
+                        @endif
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-dark ms-md-3" onclick=" window.open('https://t.me/viagginvidia','_blank')">Iscriviti a Telegram</a>
