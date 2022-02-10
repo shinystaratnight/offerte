@@ -32,4 +32,18 @@ class Offer extends Model
     {
         return Carbon::parse($value)->format('d M');
     }
+
+    public function setFromAttribute($value)
+    {
+        $format = 'd/m/Y';
+        $date = Carbon::createFromFormat($format, $value);
+        $this->attributes['from'] =  $date;
+    }
+
+    public function setToAttribute($value)
+    {
+        $format = 'd/m/Y';
+        $date = Carbon::createFromFormat($format, $value);
+        $this->attributes['to'] =  $date;
+    }
 }

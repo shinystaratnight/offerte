@@ -97,8 +97,8 @@ class OfferController extends Controller
         $validatedData = $request->validate([
             'departure' => 'in:palermo,catalina,roma,milano',
             'destination' => 'bail|required|max:50',
-            'from' => 'bail|required|date',
-            'to'=> 'bail|required|date|after:from',
+            'from' => 'bail|required|date_format:d/m/Y',
+            'to'=> 'bail|required|date_format:d/m/Y|after:from',
             'price' => 'bail|required|numeric',
             'link' => 'bail|required|url'
         ]);
