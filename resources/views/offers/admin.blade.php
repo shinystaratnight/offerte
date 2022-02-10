@@ -3,8 +3,9 @@
 @section('content')
     <section class="pt-5 pb-5">
         <div class="container">
-            <div>
-
+            <div class="mb-3 d-flex justify-content-end">
+                <a href="{{route('create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> New Offer</a>
+                <button type="button" class="btn btn-success ms-3"><i class="fas fa-copy"></i> Copy</button>
             </div>
             <div class="row">
                 <div class="col-md-3 col-sm-12">
@@ -35,7 +36,7 @@
                                                 <td>
                                                     <input type="checkbox"
                                                            class="form-check-input ms-0"
-                                                           onclick='handleClick(this, {{$offer->id}})'>
+                                                           data-id="{{$offer->id}}">
                                                 </td>
                                                 <td>
                                                     @if ($offer->hot)
@@ -78,25 +79,13 @@
     </section>
 
     <script>
-        $(document).ready(function () {
-            function handleClick(cb, id) {
-                console.log(cb.checked, id);
-                console.log($(cb));
+        var $ = jQuery;
+        $('input:checkbox').click(function () {
+            var $table = $(this).closest('.table');
+            $table.find('input[type=checkbox]').each(function () {
 
-                // /* Get the text field */
-                // var copyText = document.getElementById("myInput");
-                //
-                // /* Select the text field */
-                // copyText.select();
-                // copyText.setSelectionRange(0, 99999); /* For mobile devices */
-                //
-                // /* Copy the text inside the text field */
-                // navigator.clipboard.writeText(copyText.value);
-                //
-                // /* Alert the copied text */
-                // alert("Copied the text: " + copyText.value);
-            }
+            });
+            console.log($(this));
         });
-
     </script>
 @stop

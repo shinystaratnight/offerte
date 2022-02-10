@@ -104,6 +104,7 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{route('admin')}}" class="btn btn-secondary ms-2">Back</a>
                     </div>
                 </form>
             </div>
