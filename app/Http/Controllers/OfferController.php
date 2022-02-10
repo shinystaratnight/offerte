@@ -39,6 +39,7 @@ class OfferController extends Controller
             $offers = DB::table('offers')
                 ->where('departure', $departure)
                 ->whereMonth('from', $m)
+                ->orderBy('created_at', 'desc')
                 ->paginate(10, ['*'], $month_names[$m]);
 
             $offers->appends([
@@ -68,6 +69,7 @@ class OfferController extends Controller
             $offers = DB::table('offers')
                 ->where('departure', $departure)
                 ->whereMonth('from', $m)
+                ->orderBy('created_at', 'desc')
                 ->paginate(10, ['*'], $month_names[$m]);
 
             $offers->appends([
@@ -106,5 +108,10 @@ class OfferController extends Controller
         }
         Offer::create($validatedData);
         return redirect(route('admin'));
+    }
+
+    public function show(Request $request)
+    {
+
     }
 }

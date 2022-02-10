@@ -3,12 +3,8 @@
 @section('content')
     <section class="pt-5 pb-5">
         <div class="container">
-            <div class="alert alert-primary d-flex align-items-center" role="alert">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Info:">
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                </svg>
-                <div>
-                    Tutte le offerte sono soggette a disponibilità e a varazione di prezzo. Tutti i prezzi sono da intendersi <b>volo e hotel per persona tasse incluse</b>. Nella fase di prenotazione il prezzo visualizzato è per una coppia. Il pacchetto è comunque configurabile e personalizzabile in tutte le sue parti.  </div>
+            <div>
+
             </div>
             <div class="row">
                 <div class="col-md-3 col-sm-12">
@@ -37,8 +33,9 @@
                                         @foreach($offers[$m] as $offer)
                                             <tr>
                                                 <td>
-                                                    <input type="checkbox" class="form-check-input ms-0"
-                                                           name="hot">
+                                                    <input type="checkbox"
+                                                           class="form-check-input ms-0"
+                                                           onclick='handleClick(this, {{$offer->id}})'>
                                                 </td>
                                                 <td>
                                                     @if ($offer->hot)
@@ -48,12 +45,15 @@
                                                     @if (now()->diffInDays(\Carbon\Carbon::parse($offer->created_at)) <= 2)
                                                         <span class="badge bg-primary">New</span>
                                                     @endif
-                                                    <b>{{ $offer->destination }}</b>
-                                                    dal {{ \Carbon\Carbon::parse($offer->from)->format('d/m') }} al {{ \Carbon\Carbon::parse($offer->to)->format('d/m') }}
-                                                    - {{ \Carbon\Carbon::parse($offer->to)->diffInDays(\Carbon\Carbon::parse($offer->from))}} notti da <b>€{{ $offer->price }}
-                                                        <a class="btn btn-primary btn-sm" onclick="window.open('{{$offer->link}}', '_blank')">
-                                                            <i class="fas fa-shopping-cart"></i> Prenota Adesso
-                                                        </a>
+                                                    <b class="destination">{{ $offer->destination }}</b>
+                                                    <span class="content">
+                                                        dal {{ \Carbon\Carbon::parse($offer->from)->format('d/m') }} al {{ \Carbon\Carbon::parse($offer->to)->format('d/m') }}
+                                                    </span>
+                                                    - {{ \Carbon\Carbon::parse($offer->to)->diffInDays(\Carbon\Carbon::parse($offer->from))}} notti da <b>€{{ $offer->price }}</b>
+
+                                                    <a class="btn btn-primary btn-sm" onclick="window.open('{{$offer->link}}', '_blank')">
+                                                        <i class="fas fa-shopping-cart"></i> Prenota Adesso
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -76,4 +76,27 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $(document).ready(function () {
+            function handleClick(cb, id) {
+                console.log(cb.checked, id);
+                console.log($(cb));
+
+                // /* Get the text field */
+                // var copyText = document.getElementById("myInput");
+                //
+                // /* Select the text field */
+                // copyText.select();
+                // copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                //
+                // /* Copy the text inside the text field */
+                // navigator.clipboard.writeText(copyText.value);
+                //
+                // /* Alert the copied text */
+                // alert("Copied the text: " + copyText.value);
+            }
+        });
+
+    </script>
 @stop
