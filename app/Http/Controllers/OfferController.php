@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Offer;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

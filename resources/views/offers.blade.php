@@ -46,14 +46,23 @@
                                         @foreach($offers[$m] as $offer)
                                         <tr>
                                             <td>
-                                                <span class="badge bg-primary">New</span>
-                                                <span class="badge bg-danger">Hot</span>
                                                 <b>{{ $offer->destination }}</b>
+                                                @if ($offer->hot)
+                                                    <span class="badge bg-danger">Hot</span>
+                                                @endif
+
+                                                @if (now()->diffInDays(\Carbon\Carbon::parse($offer->created_at)) <= 2)
+                                                    <span class="badge bg-primary">New</span>
+                                                @endif
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($offer->from)->format('d/m') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($offer->to)->format('d/m') }}</td>
-                                            <td>{{ $offer->price }}</td>
-                                            <td>{{ $offer->link }}</td>
+                                            <td><b>€{{ $offer->price }}</b></td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" onclick="window.open('{{$offer->link}}', '_blank')">
+                                                    <i class="fas fa-shopping-cart"></i> Prenota Adesso
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     @else
