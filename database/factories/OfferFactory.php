@@ -19,8 +19,8 @@ class OfferFactory extends Factory
         return [
             'hot' => $this->faker->boolean(),
             'destination' => $this->faker->city,
-            'from' => $from,
-            'to' => $to,
+            'from' => Carbon::parse($from)->format('d/m/Y'),
+            'to' => Carbon::parse($to)->format('d/m/Y'),
             'price' => $this->faker->randomNumber(2),
             'departure' => $this->faker->randomElement(['palermo', 'catalina', 'roma', 'milano']),
             'link' => 'https://viagginvidia.it/go/'.$this->faker->word,
