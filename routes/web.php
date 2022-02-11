@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfferController;
 use App\Http\Middleware\EnsureDepatureIsValid;
@@ -16,9 +17,18 @@ use App\Http\Middleware\EnsureDepatureIsValid;
 
 Route::get('/', [OfferController::class, 'index'])->name('index')
     ->middleware(EnsureDepatureIsValid::class);
-Route::get('/admin', [OfferController::class, 'admin'])->name('admin')
-    ->middleware(EnsureDepatureIsValid::class);
+Route::get('/get-content', [OfferController::class, 'getContent'])->name('get_content');
 
-Route::get('/admin/create', [OfferController::class, 'create'])->name('create');
-Route::post('/admin/offer', [OfferController::class, 'store'])->name('store');
-Route::get('/admin/get-content', [OfferController::class, 'getContent'])->name('get_content');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin', [OfferController::class, 'admin'])->name('admin')
+        ->middleware(EnsureDepatureIsValid::class);
+    Route::get('/admin/create', [OfferController::class, 'create'])->name('create');
+    Route::post('/admin/offer', [OfferController::class, 'store'])->name('store');
+});
+
+
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('login-user', [AuthController::class, 'login'])->name('login_user');
+//Route::get('register', [AuthController::class, 'registration'])->name('register');
+//Route::post('register-user', [AuthController::class, 'register'])->name('register_user');
+Route::get('signout', [AuthController::class, 'signOut'])->name('signout');

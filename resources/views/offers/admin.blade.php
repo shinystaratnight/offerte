@@ -98,7 +98,7 @@
 
             console.log(ids);
 
-            $.get('admin/get-content', { ids: ids }, function (data) {
+            $.get('get-content', { ids: ids }, function (data) {
                 var text = data.join('\n');
                 navigator.clipboard.writeText(text);
             });

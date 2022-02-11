@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-dark ms-md-3" onclick=" window.open('https://t.me/viagginvidia','_blank')">Iscriviti a Telegram</a>
+                    <a class="nav-link" href="{{ route('signout') }}">Log out</a>
                 </li>
             </ul>
 

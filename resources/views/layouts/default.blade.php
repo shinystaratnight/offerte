@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <body>
 </head>
-    @include('layouts.header')
+    @include('shared.header')
 
     @yield('content')
 
-    @include('layouts.telegram')
+    @include('shared.telegram')
 
-    @include('layouts.footer')
+    @include('shared.footer')
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
