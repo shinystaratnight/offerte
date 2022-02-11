@@ -31,7 +31,7 @@
                                     {{ucfirst($month_names[$m])}} - Offerte Voli + Hotel (prezzi a persona tasse incluse) da
                                     {{ucfirst($departure)}}
                                 </h4>
-                                <table class="table table-hover">
+                                <table class="table">
                                     <tbody>
                                     @if(count($offers[$m]) > 0)
                                         @foreach($offers[$m] as $offer)
